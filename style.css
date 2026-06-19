@@ -148,7 +148,9 @@ body {
     height: 320px; 
 }
 
-.hero-left-card { width: 35%; }
+.hero-right-card {
+    width: 100%; /* Full width karena card kiri sudah dihapus */
+}
 
 /* Styling Pembungkus Panah (Lingkaran Hitam) */
 .arrow-icon-wrapper {
@@ -193,7 +195,6 @@ body {
 }
 
 .hero-right-card {
-    width: 65%;
     border-radius: var(--radius-main);
     border: var(--border-thick);
     position: relative;
@@ -726,38 +727,216 @@ body {
 @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
 /* 9. Media Queries untuk Mobile (Responsive) */
+
+/* ================================
+   TABLET LANDSCAPE (≤ 1024px)
+================================ */
+@media screen and (max-width: 1024px) {
+    .hero-left-card { width: 38%; }
+    .hero-right-card { width: 62%; }
+    .resume-grid { gap: 20px; }
+}
+
+/* ================================
+   TABLET & MOBILE (≤ 768px)
+================================ */
 @media screen and (max-width: 768px) {
-    @media screen and (max-width: 768px) {
-    /* Tambahkan flex-direction: column ke elemen yang menggunakan flex */
-    .nav-container, .hero-grid, .intro-grid, .resume-grid, .education-grid, .projects-grid, .social-grid {
-        display: flex; 
+
+    body { padding: 12px; }
+
+    /* Beri jarak atas agar konten tidak tertutup navbar saat di-scroll */
+    .portfolio-section {
+        scroll-margin-top: 80px;
+    }
+
+    /* --- Navbar --- */
+    .hamburger {
+        display: flex; /* Tampilkan tombol hamburger */
+        color: var(--text-dark);
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .nav-links {
+        display: none;           /* Sembunyikan menu secara default */
         flex-direction: column;
         width: 100%;
-        gap: 15px; /* Memberikan jarak tumpukan di HP */
+        padding: 10px 0;
+        gap: 4px;
     }
-    
-    /* ... (sisa kode di dalam media query biarkan saja seperti sebelumnya) ... */
+
+    .nav-links.open {
+        display: flex;           /* Tampil saat hamburger diklik */
     }
-    .logo-brand, .nav-links, .nav-status, .hero-left-card, .hero-right-card, .profile-card, .intro-desc-container, .social-button, .resume-col, .edu-card, .project-card, .card-header h3, .chevron, .footer-container p, .footer-credit {
-        display: block; 
+
+    .nav-item {
+        margin: 2px 0;
+        padding: 10px 16px;
+        border-radius: 10px;
+        display: block;
         width: 100%;
         text-align: left;
     }
-    .logo-brand, .nav-status {
-        text-align: center;
-        margin-bottom: 15px;
+
+    .nav-status {
+        display: none;           /* Sembunyikan status 'Open to Work' di mobile kecil */
     }
-    .hero-right-card, .profile-img-container, .resume-col, .edu-card {
-        margin-top: 20px;
+
+    /* --- Hero Grid --- */
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-spacing: 0;
+        gap: 12px;
+        margin-bottom: 12px;
     }
-    .nav-item {
-        margin: 5px;
-        display: inline-block;
+
+    .hero-left-card,
+    .hero-right-card {
+        display: block;
+        width: 100%;
+        height: auto;
     }
-    .social-button {
-        margin-bottom: 10px;
+
+    .hero-right-card {
+        min-height: 240px;
+        padding: 20px;
     }
+
+    .massive-title {
+        width: 200px;
+        height: 200px;
+        right: 10px;
+        top: 20px;
+    }
+
     .massive-title span {
-        font-size: 48pt; /* Mengecilkan teks portofolio di HP */
+        font-size: clamp(2.5rem, 13vw, 4.5rem);
+        line-height: 0.8;
     }
+
+    .massive-title .text-2 { top: 55px; }
+    .massive-title .text-3 { top: 115px; right: 5px; }
+
+    .hero-year {
+        font-size: 22pt;
+        bottom: 15px;
+        left: 20px;
+    }
+
+    /* --- Tag Cloud --- */
+    .tag-cloud {
+        flex-wrap: wrap;
+    }
+
+    /* --- Intro Grid (Profile + Deskripsi) --- */
+    .intro-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-spacing: 0;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .profile-card,
+    .intro-desc-container {
+        display: block;
+        width: 100%;
+    }
+
+    .profile-img-container {
+        height: 280px;
+    }
+
+    /* --- Intro Desc Container --- */
+    .intro-desc-container {
+        display: block;
+    }
+
+    /* --- Resume Grid --- */
+    .resume-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* --- Education Grid --- */
+    .education-grid {
+        display: flex;
+        flex-direction: column;
+        border-spacing: 0;
+        gap: 12px;
+    }
+
+    .edu-card {
+        display: block;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    /* --- Projects Grid --- */
+    .projects-grid {
+        display: flex;
+        flex-direction: column;
+        border-spacing: 0;
+        gap: 12px;
+    }
+
+    .project-card {
+        display: block;
+        width: 100%;
+    }
+
+    /* --- Card Header --- */
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-header h3, .chevron {
+        display: block;
+    }
+
+    /* --- Footer --- */
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .footer-container p,
+    .footer-credit {
+        display: block;
+        text-align: left;
+    }
+}
+
+/* ================================
+   SMARTPHONE KECIL (≤ 480px)
+================================ */
+@media screen and (max-width: 480px) {
+    body { padding: 8px; }
+
+    .navbar { padding: 10px 14px; }
+
+    .brand-name { font-size: 11pt; }
+
+    .massive-title span {
+        font-size: clamp(2rem, 15vw, 3.5rem);
+    }
+
+    .profile-img-container { height: 220px; }
+
+    .overlay-text { font-size: 14pt; }
+
+    .profile-subtext { font-size: 10pt; }
+
+    .section-title-wrap h2 { font-size: 15pt; }
+
+    .btn-cv { width: 100%; text-align: center; }
 }
