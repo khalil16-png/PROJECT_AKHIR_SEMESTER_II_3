@@ -1,0 +1,741 @@
+/* ==========================================================================
+   CSS STYLING - GEN-Z BRUTALIST & MINIMALIST PORTFOLIO
+   ========================================================================== */
+
+/* 1. Global Reset & Variabel */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+:root {
+    --bg-primary: #f3f3f3;          /* Abu-abu terang bersih khas portofolio cetak fisik */
+    --text-dark: #111111;           /* Hitam kontras tinggi */
+    --cobalt-blue: #1e40af;         /* Warna biru elektrik gen-z dari referensi gambar */
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #18181b;
+    --border-thick: 2px solid #111111;
+    --border-thin: 1px solid #111111;
+    --radius-main: 16px;            /* Sudut membulat yang konsisten dari referensi */
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-dark);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.box-border {
+    border: var(--border-thick);
+    background-color: var(--card-bg-light);
+    border-radius: var(--radius-main);
+    padding: 24px;
+}
+
+/* 2. Header & Navigasi */
+.navbar {
+    border: var(--border-thick);
+    background-color: var(--card-bg-light);
+    border-radius: var(--radius-main);
+    padding: 12px 24px;
+    margin-bottom: 20px;
+}
+
+/* Mengubah Table menjadi Flexbox */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-brand { 
+    display: flex; 
+    align-items: center; 
+}
+
+.avatar-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--text-dark);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.brand-name { 
+    font-weight: 700; 
+    font-size: 13pt; 
+}
+
+/* Memastikan menu desktop menggunakan Flexbox */
+.nav-links { 
+    display: flex; 
+    align-items: center; 
+}
+
+.nav-item {
+    color: #666;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 10px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active, .nav-item:hover {
+    color: var(--text-dark);
+    background-color: #e5e7eb;
+}
+
+.nav-status { 
+    font-weight: 600; 
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+/* Memaksa Hamburger Sembunyi di Desktop */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+/* 3. Section Controller */
+.portfolio-section {
+    display: none; 
+    animation: fadeIn 0.6s ease forwards;
+}
+.portfolio-section.active-section { display: block; }
+
+/* 4. Section 1: Intro Grid (Profile & Intro) */
+.intro-grid {
+    display: table;
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: separate;
+    border-spacing: 15px 0;
+}
+.profile-card {
+    display: table-cell; 
+    width: 35%; 
+    vertical-align: top; 
+}
+
+/* Posisi relatif agar teks bisa mengambang di atas gambar */
+.profile-img-container {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: var(--border-thin);
+    position: relative; 
+}
+
+/* Mengatur agar foto otomatis memotong (crop) menyesuaikan kotak tanpa gepeng */
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* Teks overlay di atas foto profil */
+.overlay-text {
+    position: absolute; 
+    bottom: 20px; 
+    left: 20px; 
+    color: white; 
+    font-size: 18pt; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); 
+    z-index: 2;
+}
+/* =========================================
+   Efek Mesin Tik (Typewriter) Berulang
+   ========================================= */
+.typewriter {
+    display: inline-block; /* Menggunakan inline-block agar lebarnya stabil */
+    overflow: hidden; 
+    white-space: nowrap; 
+    border-right: 3px solid white; 
+    width: 0; /* Mulai dari lebar 0 */
+    
+    /* Animasi berjalan selama 3 detik, 17 langkah, dan bolak-balik tanpa henti */
+    animation: 
+        typing 3s steps(17, end) infinite alternate, 
+        blink-caret 0.75s step-end infinite;
+}
+
+/* Mesin Penggerak Animasi Teks */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 17ch; } /* 'ch' berarti character. Sempurna untuk 17 huruf! */
+}
+
+/* Mesin Penggerak Animasi Kursor Berkedip */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+}
+.profile-subtext {
+    font-size: 10.5pt; 
+    color: #4b5563; 
+    line-height: 1.5; 
+    font-style: italic; 
+}
+
+.intro-desc-container {
+    display: table-cell; width: 65%; 
+    vertical-align: top; 
+}
+.intro-card {
+    margin-bottom: 20px; }
+.card-header { 
+    border-bottom: var(--border-thin); 
+    padding-bottom: 12px; 
+    margin-bottom: 15px; 
+    display: table; 
+    width: 100%; 
+}
+.card-header h3 { 
+    display: table-cell; 
+    font-size: 13pt; 
+    text-transform: uppercase; 
+}
+.chevron { 
+    display: table-cell; 
+    text-align: right; 
+}
+
+.card-body h4 {
+    font-size: 15pt; 
+    font-weight: 700; 
+    margin-bottom: 12px; }
+.card-body p {
+    font-size: 11pt; 
+    line-height: 1.6; 
+    color: #374151; 
+}
+/* Styling Kotak Kutipan Arab */
+.arabic-quote-box {
+    margin-top: 18px;
+    padding: 16px;
+    background-color: #f9fafb; /* Abu-abu sangat terang agar kontras dengan teks */
+    border-right: 4px solid var(--cobalt-blue); /* Garis aksen biru di sebelah kanan */
+    border-radius: 8px 0 0 8px; /* Membulatkan sudut kiri saja */
+}
+
+/* Styling Teks Arab (Lebih besar dan rata kanan) */
+.arabic-text {
+    display: block;
+    font-size: 20pt; /* Diperbesar agar harakat terbaca sangat jelas */
+    text-align: right; 
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.6;
+    font-family: 'Amiri', 'Scheherazade New', serif, sans-serif; /* Fallback font Arab klasik jika tersedia di device pengguna */
+}
+
+/* Styling Terjemahan */
+.arabic-translation {
+    display: block;
+    font-size: 10pt;
+    font-style: italic;
+    color: #4b5563;
+    text-align: right;
+    line-height: 1.4;
+}
+/* Styling Tombol CV */
+.cv-download-wrapper {
+    margin-top: 20px;
+}
+
+.btn-cv {
+    display: inline-block;
+    background-color: #111827; /* Warna gelap elegan */
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid #111827;
+}
+
+.btn-cv:hover {
+    background-color: transparent;
+    color: #111827;
+    transform: translateY(-2px); /* Efek tombol sedikit terangkat saat disentuh */
+}
+/* Social Grid Contact */
+/* Social Icon Links - Desain Gen-Z Brutalism */
+.social-icon-links { 
+    display: flex; 
+    flex-wrap: wrap; /* Ikon akan turun ke baris bawah otomatis jika layar sempit */
+    gap: 12px; /* Jarak antar ikon */
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.s-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px; /* Ukuran kotak ikon */
+    height: 54px;
+    background-color: var(--card-bg-light); 
+    border: var(--border-thick); 
+    border-radius: 12px; /* Sedikit membulat di ujungnya */
+    color: var(--text-dark); /* Warna logo hitam */
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi memantul */
+}
+
+/* Mengatur ukuran logo di dalam kotak */
+.s-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* Memastikan logo mengikuti warna teks kotak */
+}
+
+/* EFEK HOVER (Saat Disentuh Kursor) */
+.s-icon:hover { 
+    transform: translateY(-5px) scale(1.05); /* Ikon terangkat dan sedikit membesar */
+    background-color: var(--text-dark); /* Kotak berubah jadi hitam */
+    color: white; /* Logo di dalamnya berubah jadi putih */
+    box-shadow: 4px 4px 0px var(--cobalt-blue); /* Menambahkan bayangan tegas berwarna biru */
+}
+/* 5. Section 2: Resume Layout (Timeline & Progress Bars) */
+.resume-grid {
+    display: flex; 
+    gap: 30px; /* Jarak tengah antar kolom kiri dan kanan yang lebih lega dan lurus */
+    width: 100%; 
+}
+
+.resume-col {
+    flex: 1; /* Memastikan kolom kiri dan kanan lebarnya persis 50:50 */
+    min-width: 0; /* Mencegah konten meluber keluar batas kolom */
+}
+.section-title-wrap {
+    margin-bottom: 20px; 
+    display: flex; /* Mengubah dari metode table ke flexbox yang lebih modern */
+    justify-content: space-between; /* Mendorong judul ke kiri dan badge ke kanan otomatis */
+    align-items: center; /* Memastikan keduanya sejajar lurus secara vertikal */
+    width: 100%; 
+}
+
+.section-title-wrap h2 {
+    font-size: 18pt; 
+    font-weight: 800; 
+    margin: 0; /* Menghilangkan margin bawaan agar posisinya stabil */
+}
+
+.badge { 
+    background: #e5e7eb; 
+    padding: 6px 14px; /* Memberikan ruang napas di atas/bawah dan kiri/kanan teks */
+    border-radius: 20px; /* Membuat sudut membulat sempurna menyerupai pil */
+    font-size: 8.5pt; 
+    font-weight: 700;
+    color: var(--text-dark);
+    display: inline-flex; /* Menjadikannya kotak yang mengikuti panjang teks */
+    align-items: center; /* Memastikan teks berada tepat di tengah (vertikal) */
+    justify-content: center; /* Memastikan teks berada tepat di tengah (horizontal) */
+    white-space: nowrap; /* Mencegah teks turun ke baris baru jika layarnya sempit */
+}
+
+.timeline-item {
+    margin-bottom: 20px; /* Disamakan dengan jarak kotak sebelah kanan (asalnya 15px) */
+    transition: transform 0.3s ease; 
+}
+.timeline-item:hover {
+    transform: scale(1.01); 
+}
+.time-badge {
+    padding: 4px 10px; 
+    border-radius: 20px; 
+    font-size: 8.5pt; 
+    font-weight: 700; 
+}
+.time-badge.active { 
+    background-color: var(--cobalt-blue); 
+    color: white; 
+}
+.time-badge.past {
+    background-color: #e5e7eb; 
+    color: #4b5563; }
+.job-title {
+    font-size: 13pt; 
+    font-weight: 700; 
+    margin-top: 8px; 
+}
+.company-name {
+    font-size: 10pt; 
+    color: #6b7280; 
+    margin-bottom: 8px; 
+}
+.job-desc {
+    font-size: 10pt; 
+    line-height: 1.5; 
+    color: #374151; }
+
+/* Class Tambahan yang Terlewat */
+.section-subheading {
+    font-size: 14pt;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+.expertise-text {
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 20px;
+}
+
+/* Progress Bars */
+.skills-container {
+    margin-bottom: 20px; 
+}
+.expertise-box {
+    margin-bottom: 20px; /* Memberikan jarak pemisah antara kotak keahlian dengan kotak di bawahnya */
+}
+
+.skill-item {
+    margin-bottom: 15px; }
+.skill-info { 
+    display: table; 
+    width: 100%; 
+    margin-bottom: 6px; }
+.skill-name {
+    display: table-cell; 
+    font-weight: 600; 
+    font-size: 10.5pt; 
+}
+.skill-percentage {
+    display: table-cell; 
+    text-align: right; 
+    font-weight: 700; 
+    color: var(--cobalt-blue); 
+}
+.progress-bar-bg {
+    width: 100%; 
+    height: 12px; 
+    background-color: #e5e7eb; 
+    border-radius: 6px; 
+    overflow: hidden; 
+    border: 1px solid #ccc; }
+.progress-bar-fill {
+    width: 0%; 
+    height: 100%; 
+    background-color: var(--text-dark); 
+    border-radius: 6px; 
+    transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1); }
+
+.softskills-tags .s-tag {
+    display: inline-block; 
+    margin: 4px; padding: 6px 14px; 
+    border-radius: 20px; 
+    font-size: 9.5pt; 
+    font-weight: 600; 
+}
+.blue-tag {
+    background-color: var(--cobalt-blue); 
+    color: white; }
+.outline-tag {
+    border: var(--border-thin); 
+    background-color: white; 
+}
+
+/* Education Grid */
+.education-section-wrapper {
+     margin-top: 30px; 
+    }
+.education-grid { 
+    display: table; 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 15px 0; 
+}
+.edu-card {
+    display: table-cell; 
+    width: 33.33%; 
+    padding: 24px; 
+    border-radius: var(--radius-main); 
+    border: var(--border-thick); 
+}
+.black-card {
+    background-color: var(--card-bg-dark); 
+    color: white; 
+}
+.edu-year {
+    font-size: 14pt; 
+    font-weight: 800; 
+    color: #9ca3af; 
+    margin-bottom: 10px; 
+}
+
+/* 6. Section 3: Works / Projects Grid */
+.projects-grid {
+    display: table; 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 20px 0; 
+}
+.project-card {
+    display: table-cell; 
+    width: 33.33%; 
+    vertical-align: top; 
+    background-color: white; 
+}
+/* Styling Pembungkus Foto Proyek */
+.project-image-wrapper {
+    width: 100%;
+    height: 180px; /* Menyeragamkan tinggi semua foto */
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Memastikan sudut foto terpotong rapi mengikuti kotak */
+    border: var(--border-thin);
+}
+
+/* Styling Gambar Fotonya (Anti-Gepeng) */
+.project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fitur ajaib agar foto otomatis memotong proporsional sesuai kotak */
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transisi mulus */
+}
+
+/* Efek Zoom Fotonya Saat Kotak Disentuh Kursor */
+.card-hover-effect:hover .project-image-wrapper img {
+    transform: scale(1.08); /* Foto akan sedikit membesar ke arah depan */
+}
+.project-category {
+    font-size: 8.5pt; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    color: var(--cobalt-blue); 
+    display: block; 
+    margin-bottom: 6px; 
+}
+.card-hover-effect:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1); 
+}
+
+/* 7. Footer Section */
+.footer {
+    margin-top: 40px; 
+    border-top: var(--border-thick); 
+    padding: 20px 0; 
+}
+.footer-container {
+    display: table; 
+    width: 100%; 
+    font-size: 10pt; 
+    color: #4b5563; 
+}
+.footer-container p { 
+    display: table-cell; 
+}
+.footer-credit { 
+    display: table-cell; 
+    text-align: right; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    color: var(--text-dark); 
+}
+
+/* 8. Keyframe Animasi */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-pulse { animation: pulse 1.8s infinite ease-in-out; }
+@keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* 9. Media Queries untuk Mobile (Responsive) */
+
+/* ================================
+   TABLET LANDSCAPE (≤ 1024px)
+================================ */
+@media screen and (max-width: 1024px) {
+    .resume-grid { gap: 20px; }
+}
+
+/* ================================
+   TABLET & MOBILE (≤ 768px)
+================================ */
+@media screen and (max-width: 768px) {
+
+    body { padding: 12px; }
+
+    /* Beri jarak atas agar konten tidak tertutup navbar saat di-scroll */
+    .portfolio-section {
+        scroll-margin-top: 80px;
+    }
+
+    /* --- Navbar --- */
+    .hamburger {
+        display: flex; /* Tampilkan tombol hamburger */
+        color: var(--text-dark);
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .nav-links {
+        display: none;           /* Sembunyikan menu secara default */
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+        gap: 4px;
+    }
+
+    .nav-links.open {
+        display: flex;           /* Tampil saat hamburger diklik */
+    }
+
+    .nav-item {
+        margin: 2px 0;
+        padding: 10px 16px;
+        border-radius: 10px;
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-status {
+        display: none;           /* Sembunyikan status 'Open to Work' di mobile kecil */
+    }
+
+    /* --- Intro Grid (Profile + Deskripsi) --- */
+    .intro-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-spacing: 0;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .profile-card,
+    .intro-desc-container {
+        display: block;
+        width: 100%;
+    }
+
+    .profile-img-container {
+        height: 280px;
+    }
+
+    /* --- Intro Desc Container --- */
+    .intro-desc-container {
+        display: block;
+    }
+
+    /* --- Resume Grid --- */
+    .resume-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* --- Education Grid --- */
+    .education-grid {
+        display: flex;
+        flex-direction: column;
+        border-spacing: 0;
+        gap: 12px;
+    }
+
+    .edu-card {
+        display: block;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    /* --- Projects Grid --- */
+    .projects-grid {
+        display: flex;
+        flex-direction: column;
+        border-spacing: 0;
+        gap: 12px;
+    }
+
+    .project-card {
+        display: block;
+        width: 100%;
+    }
+
+    /* --- Card Header --- */
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-header h3, .chevron {
+        display: block;
+    }
+
+    /* --- Footer --- */
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .footer-container p,
+    .footer-credit {
+        display: block;
+        text-align: left;
+    }
+}
+
+/* ================================
+   SMARTPHONE KECIL (≤ 480px)
+================================ */
+@media screen and (max-width: 480px) {
+    body { padding: 8px; }
+
+    .navbar { padding: 10px 14px; }
+
+    .brand-name { font-size: 11pt; }
+
+    .massive-title span {
+        font-size: clamp(2rem, 15vw, 3.5rem);
+    }
+
+    .profile-img-container { height: 220px; }
+
+    .overlay-text { font-size: 14pt; }
+
+    .profile-subtext { font-size: 10pt; }
+
+    .section-title-wrap h2 { font-size: 15pt; }
+
+    .btn-cv { width: 100%; text-align: center; }
+}
