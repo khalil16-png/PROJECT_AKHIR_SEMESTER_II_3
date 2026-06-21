@@ -415,7 +415,7 @@ function triggerSkillBars() {
 }
 
 /* ==========================================================================
-   CONTACT FORM — Formspree AJAX submission
+   CONTACT FORM — Formspree AJAX submission (Diperbarui)
    ========================================================================== */
 function initContactForm() {
     const form    = document.getElementById("contact-form");
@@ -436,35 +436,41 @@ function initContactForm() {
         btn.disabled    = true;
         btn.textContent = "Mengirim...";
 
-        // Ambil nilai input
-        const payload = {
-            nama:  document.getElementById("contact-name").value,
-            email: document.getElementById("contact-email").value,
-            pesan: document.getElementById("contact-message").value
-        };
+        // FormData otomatis mengambil semua input yang memiliki atribut 'name' di HTML
+        const data = new FormData(form);
 
         try {
-            // Kirim sebagai GET request (lebih reliable dengan Google Apps Script)
-            const queryString = new URLSearchParams({
-                nama:  payload.nama,
-                email: payload.email,
-                pesan: payload.pesan
-            }).toString();
-
-            await fetch(form.action + "?" + queryString, {
-                method: "GET",
-                mode:   "no-cors"
+            // Kirim request POST ke Formspree
+            const response = await fetch(form.action, {
+                method: "POST", // Formspree wajib POST
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
             });
 
-            // no-cors tidak bisa baca response, tapi request tetap terkirim
-            form.reset();
-            success.style.display = "block";
+            if (response.ok) {
+                // Jika server Formspree merespons sukses (pesan terkirim)
+                form.reset();
+                success.style.display = "block";
+            } else {
+                // Jika server Formspree merespons error (misal: spam atau email belum verifikasi)
+                error.style.display = "block";
+            }
 
         } catch (err) {
+            // Jika koneksi internet terputus atau gagal fetch
             error.style.display = "block";
         } finally {
+            // Mengembalikan tombol ke kondisi semula
             btn.disabled    = false;
-            btn.textContent = translations[currentLang]?.form_submit || "Kirim Pesan ✉️";
+            
+            // Pengecekan aman untuk fitur multi-bahasa Anda
+            if (typeof translations !== 'undefined' && typeof currentLang !== 'undefined' && translations[currentLang]) {
+                btn.textContent = translations[currentLang].form_submit;
+            } else {
+                btn.textContent = "Kirim Pesan ✉️";
+            }
         }
     });
 }
