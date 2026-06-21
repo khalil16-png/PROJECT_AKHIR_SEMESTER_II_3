@@ -38,13 +38,18 @@
                 <a href="#contact"      class="nav-item"        data-target="contact"      data-i18n="nav_contact">Contact</a>
             </nav>
 
-            <div class="nav-controls">
-                <!-- Language Switcher -->
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="id">ID</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="ar">AR</button>
-                </div>
+            <div class="mobile-settings">
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="id">ID</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ar">AR</button>
+        </div>
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle dark mode">
+            <!-- (Gunakan SVG yang sama dengan theme-toggle utama Anda) -->
+            ☀️/🌙
+        </button>
+    </div>
+</nav>
 
                 <!-- Dark Mode Toggle -->
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -224,7 +229,7 @@
         <h2 data-i18n="cert_title">Sertifikat &amp; Penghargaan</h2>
         <span class="badge" data-i18n="cert_badge">Awards</span>
     </div>
-    
+
     <!-- Menggunakan class certificates-grid untuk slider -->
     <div class="certificates-grid">
         
