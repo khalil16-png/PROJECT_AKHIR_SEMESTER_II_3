@@ -892,7 +892,7 @@ body {
 .s-icon:hover {
     transform: translateY(-5px) scale(1.05);
     background-color: var(--text-dark);
-    color: white;
+    color: var(--card-bg-light);
     box-shadow: 4px 4px 0px var(--cobalt-blue);
 }
 
