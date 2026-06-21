@@ -678,6 +678,8 @@ body {
     display: flex; 
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    gap: 40px;
+    padding-bottom: 20px;
 }
 
 .certificates-grid .edu-card {
