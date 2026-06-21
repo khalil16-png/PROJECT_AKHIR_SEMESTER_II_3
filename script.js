@@ -355,8 +355,18 @@ function initSmoothScroll() {
             e.preventDefault();
             const targetId = link.getAttribute("href").substring(1);
             const target   = document.getElementById(targetId);
+            const navMenu  = document.getElementById("nav-menu");
+
             if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Jika menu mobile sedang terbuka, tutup dulu lalu tunggu animasinya selesai baru scroll
+                if (navMenu && navMenu.classList.contains("open")) {
+                    navMenu.classList.remove("open");
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 400); // 400ms menyesuaikan durasi transisi CSS
+                } else {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
             }
         });
     });
