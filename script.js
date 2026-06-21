@@ -428,37 +428,39 @@ function initContactForm() {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Hide previous messages
+        // Sembunyikan pesan sebelumnya
         success.style.display = "none";
         error.style.display   = "none";
 
-        // Disable button while sending
-        btn.disabled     = true;
-        btn.textContent  = "Mengirim...";
+        // Nonaktifkan tombol saat mengirim
+        btn.disabled    = true;
+        btn.textContent = "Mengirim...";
+
+        // Ambil nilai input
+        const payload = {
+            nama:  document.getElementById("contact-name").value,
+            email: document.getElementById("contact-email").value,
+            pesan: document.getElementById("contact-message").value
+        };
 
         try {
-            const response = await fetch(form.action, {
-                method:  "POST",
-                body:    new FormData(form),
-                headers: { "Accept": "application/json" }
+            // Kirim ke Google Apps Script sebagai JSON
+            await fetch(form.action, {
+                method:   "POST",
+                mode:     "no-cors",   // diperlukan untuk Apps Script cross-origin
+                headers:  { "Content-Type": "application/json" },
+                body:     JSON.stringify(payload)
             });
 
-            if (response.ok) {
-                form.reset();
-                success.style.display = "block";
-                btn.textContent = translations[currentLang]?.form_submit || "Kirim Pesan ✉️";
-            } else {
-                const data = await response.json();
-                if (data.errors) {
-                    error.style.display = "block";
-                }
-                btn.textContent = translations[currentLang]?.form_submit || "Kirim Pesan ✉️";
-            }
+            // no-cors tidak bisa baca response, tapi request tetap terkirim
+            form.reset();
+            success.style.display = "block";
+
         } catch (err) {
             error.style.display = "block";
-            btn.textContent = translations[currentLang]?.form_submit || "Kirim Pesan ✉️";
         } finally {
-            btn.disabled = false;
+            btn.disabled    = false;
+            btn.textContent = translations[currentLang]?.form_submit || "Kirim Pesan ✉️";
         }
     });
 }
