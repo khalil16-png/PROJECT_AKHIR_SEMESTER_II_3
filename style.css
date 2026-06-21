@@ -970,11 +970,19 @@ body {
 }
 
 .footer-credit {
-    font-weight: 700;
-    text-transform: uppercase;
+    display: flex;
+    gap: 12px;
+    align-items: center;
     color: var(--text-dark);
-    font-size: 8.5pt;
-    letter-spacing: 0.08em;
+}
+
+.footer-credit svg {
+    transition: transform 0.3s ease, fill 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-credit svg:hover {
+    transform: translateY(-2px) scale(1.1);
 }
 
 /* =========================================
