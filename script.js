@@ -444,12 +444,11 @@ function initContactForm() {
         };
 
         try {
-            // Kirim ke Google Apps Script sebagai JSON
+            // Kirim ke Google Apps Script (no-cors = tidak baca response, tapi data tetap terkirim)
             await fetch(form.action, {
-                method:   "POST",
-                mode:     "no-cors",   // diperlukan untuk Apps Script cross-origin
-                headers:  { "Content-Type": "application/json" },
-                body:     JSON.stringify(payload)
+                method: "POST",
+                mode:   "no-cors",
+                body:   JSON.stringify(payload)
             });
 
             // no-cors tidak bisa baca response, tapi request tetap terkirim
