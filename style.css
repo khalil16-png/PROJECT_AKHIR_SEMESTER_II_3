@@ -153,8 +153,12 @@ body {
 .nav-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     flex-shrink: 0;
+}
+
+.mobile-nav-controls {
+    display: none;
 }
 
 /* Language Switcher */
@@ -1109,6 +1113,21 @@ body {
     .nav-controls {
         order: 3;
         gap: 6px;
+    }
+
+    .nav-controls .lang-switcher,
+    .nav-controls .theme-toggle {
+        display: none;
+    }
+
+    .mobile-nav-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border-color);
+        gap: 12px;
     }
 
     .nav-status { display: none; }
