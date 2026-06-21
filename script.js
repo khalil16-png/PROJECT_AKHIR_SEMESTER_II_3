@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initHamburgerMenu();
     initSkillBarObserver();
     initContactForm();
+    initTypewriter();
 });
 
 /* ==========================================================================
@@ -475,4 +476,46 @@ function initContactForm() {
             }
         }
     });
+}
+
+/* ==========================================================================
+   TYPEWRITER EFFECT (JS implementation for proportional fonts)
+   ========================================================================== */
+function initTypewriter() {
+    const el = document.querySelector(".typewriter");
+    if (!el) return;
+
+    const text = el.textContent;
+    el.textContent = "";
+
+    let i = 0;
+    let isDeleting = false;
+
+    function type() {
+        let speed = 180; // Kecepatan ngetik
+
+        if (isDeleting) {
+            el.textContent = text.substring(0, i - 1);
+            i--;
+            speed = 100; // Kecepatan menghapus sedikit lebih cepat
+        } else {
+            el.textContent = text.substring(0, i + 1);
+            i++;
+        }
+
+        if (!isDeleting && i === text.length) {
+            // Selesai ngetik, jeda 2 detik sebelum menghapus
+            speed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && i === 0) {
+            // Selesai menghapus, jeda 0.5 detik sebelum ngetik lagi
+            isDeleting = false;
+            speed = 500;
+        }
+
+        setTimeout(type, speed);
+    }
+
+    // Start typing after a short delay
+    setTimeout(type, 500);
 }
