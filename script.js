@@ -444,17 +444,16 @@ function initContactForm() {
         };
 
         try {
-            // Kirim sebagai form URL-encoded (kompatibel dengan no-cors & Apps Script e.parameter)
-            const params = new URLSearchParams({
+            // Kirim sebagai GET request (lebih reliable dengan Google Apps Script)
+            const queryString = new URLSearchParams({
                 nama:  payload.nama,
                 email: payload.email,
                 pesan: payload.pesan
-            });
+            }).toString();
 
-            await fetch(form.action, {
-                method: "POST",
-                mode:   "no-cors",
-                body:   params
+            await fetch(form.action + "?" + queryString, {
+                method: "GET",
+                mode:   "no-cors"
             });
 
             // no-cors tidak bisa baca response, tapi request tetap terkirim
