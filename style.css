@@ -671,6 +671,19 @@ body {
     color: var(--text-muted);
     opacity: 1;
 }
+/* =========================================
+   LAYOUT SERTIFIKAT SLIDER (KODE BARU UNTUK MEMPERBAIKI TAMPILAN SERTIFIKAT)
+   ========================================= */
+.certificates-grid {
+    display: flex; 
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.certificates-grid .edu-card {
+    display: flex !important; 
+    flex-direction: column;
+}
 
 /* =========================================
    9. Section 6: Projects Grid
