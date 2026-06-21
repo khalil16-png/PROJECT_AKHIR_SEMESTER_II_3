@@ -671,20 +671,48 @@ body {
     color: var(--text-muted);
     opacity: 1;
 }
-/* =========================================
-   LAYOUT SERTIFIKAT SLIDER (KODE BARU UNTUK MEMPERBAIKI TAMPILAN SERTIFIKAT)
-   ========================================= */
+/* ==========================================================================
+   LAYOUT SERTIFIKAT SLIDER (VERSI FINAL)
+   ========================================================================== */
 .certificates-grid {
-    display: flex; 
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 40px;
-    padding-bottom: 20px;
+    display: flex;
+    overflow-x: auto;              /* Mengaktifkan geser horizontal */
+    scroll-snap-type: x mandatory; /* Efek magnet saat digeser */
+    gap: 40px;                     /* Jarak renggang antar kotak yang lega */
+    padding-top: 20px;             /* Ruang atas agar border hover tidak hilang */
+    padding-bottom: 20px;          /* Ruang bawah untuk tempat scrollbar */
+    width: 100%;
+    
+    /* Mempercantik scrollbar (Chrome/Edge/Safari) */
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
 }
 
+.certificates-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.certificates-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+.certificates-grid::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+/* KUNCI UTAMA: Mengatur Kartu Agar Bisa Digeser (Tidak Mengecil) */
 .certificates-grid .edu-card {
-    display: flex !important; 
+    display: flex !important;
     flex-direction: column;
+    width: auto !important;        
+    min-width: 320px;              /* Mengunci ukuran kotak agar proporsional */
+    flex: 0 0 auto;                /* Mencegah kotak menyusut/mendet */
+    scroll-snap-align: start;      /* Titik henti magnet */
+}
+
+/* Memastikan gambar seragam */
+.certificates-grid .project-image-wrapper {
+    height: 200px;
+    margin-bottom: 20px;
 }
 
 /* =========================================
