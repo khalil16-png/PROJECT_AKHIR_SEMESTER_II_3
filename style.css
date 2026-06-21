@@ -240,6 +240,11 @@ body {
     display: none;
     cursor: pointer;
     color: var(--text-dark);
+    transition: transform 0.2s ease;
+}
+
+.hamburger:active {
+    transform: scale(0.85);
 }
 
 /* =========================================
@@ -1091,16 +1096,22 @@ body {
     .hamburger  { order: 2; margin-left: auto; }
 
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
         width: 100%;
         order: 4;
-        padding: 8px 0;
+        padding: 0;
         gap: 2px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
     }
 
     .nav-links.open {
-        display: flex;
+        max-height: 600px; /* Cukup besar untuk memuat seluruh isi menu dan tombol */
+        opacity: 1;
+        padding: 12px 0;
     }
 
     .nav-item {
