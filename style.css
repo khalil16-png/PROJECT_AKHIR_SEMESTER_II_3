@@ -216,25 +216,6 @@ body {
 [data-theme="dark"] .icon-sun  { display: block; }
 [data-theme="dark"] .icon-moon { display: none; }
 
-/* Status dot */
-.nav-status {
-    font-weight: 600;
-    font-size: 8.5pt;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    color: var(--text-dark);
-}
-
-.status-dot {
-    display: inline-block;
-    width: 9px;
-    height: 9px;
-    background-color: #22c55e;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
 /* Hamburger — Hidden on desktop */
 .hamburger {
     display: none;
