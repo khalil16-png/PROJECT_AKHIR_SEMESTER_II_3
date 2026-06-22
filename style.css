@@ -791,6 +791,26 @@ body {
     color: var(--text-muted);
 }
 
+.btn-demo {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: var(--text-dark);
+    color: var(--card-bg-light);
+    border: 2px solid var(--text-dark);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 9pt;
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.btn-demo:hover {
+    background-color: transparent;
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
 .card-hover-effect {
     transition: transform var(--transition), box-shadow var(--transition);
 }
