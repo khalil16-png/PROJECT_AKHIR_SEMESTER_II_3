@@ -112,6 +112,14 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+.nav-logo-img {
+    height: 34px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
 .brand-name {
     font-weight: 700;
     font-size: 12pt;
