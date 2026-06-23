@@ -773,16 +773,17 @@ body {
 }
 
 .btn-demo {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 15px;
-    padding: 8px 16px;
+    width: 44px;
+    height: 44px;
     background-color: var(--text-dark);
     color: var(--card-bg-light);
     border: 2px solid var(--text-dark);
-    border-radius: 6px;
+    border-radius: 50%;
     text-decoration: none;
-    font-size: 9pt;
-    font-weight: 600;
     transition: all var(--transition);
 }
 
